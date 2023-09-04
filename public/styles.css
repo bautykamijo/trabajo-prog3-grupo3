@@ -29,25 +29,6 @@ h2{
 
 
 
-footer{
-    display: flex;
-    flex-wrap: wrap;
-    background-color: black;
-    flex-direction: row;
-    align-items: flex-end;
-    
-
-    }
-
-
-footer .footnombre{
-    display: flex;
-    padding-left: 20px;
-    justify-content: right;
-    align-items:center;
-}
-
-
 .padre{ 
      display: flex;
      flex-wrap: wrap;
