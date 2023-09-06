@@ -36,10 +36,10 @@ class Home extends Component {
         console.log(this.state.upcoming);
 
         return(
-            <div> 
+            <main>
                 <CardContainer populares={this.state.popular}/>
                 <CardContainer proximamente={this.state.upcoming}/>
-            </div>
+            </main>
         )
     };
 
