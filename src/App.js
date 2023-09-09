@@ -13,7 +13,7 @@ import NotFound from './screens/NotFound/NotFound';
 function App() {
 
   return (
-    <React.Fragment>
+    <body className="bodydegrade">
     <Header/>
     <Switch>
       <Route path='/' exact={true} component={Home} />
@@ -24,8 +24,7 @@ function App() {
     </Switch>
     
     <Footer/>
-    </React.Fragment>
-
+    </body>
   );
 }
 

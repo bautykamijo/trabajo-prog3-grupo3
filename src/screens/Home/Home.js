@@ -32,13 +32,13 @@ class Home extends Component {
 
 
     render(){
-        console.log(this.state.popular);
-        console.log(this.state.upcoming);
+       // console.log(this.state.popular.results);
+       // console.log(this.state.upcoming.results);
 
         return(
             <main>
-                <CardContainer populares={this.state.popular}/>
-                <CardContainer proximamente={this.state.upcoming}/>
+                <CardContainer populares={this.state.popular.results}/>
+                <CardContainer proximamente={this.state.upcoming.results}/>
             </main>
         )
     };
