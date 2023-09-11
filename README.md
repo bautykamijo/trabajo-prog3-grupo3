@@ -71,4 +71,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 
 
-    {this.props.populares.map((popu, idx) =>  <Card key={popu.title + idx} pelicula={popu}/>)}
+<h4> Generos: <Link className="generoGlobal" to="/generos">
+                        {detallada.genres.map((genero) => {genero !== detallada.genres[-1] ? <React.Fragment> {genero.name + " - "} </React.Fragment> : <React.Fragment> {genero.name}</React.Fragment>})}
+                     </Link></h4>
