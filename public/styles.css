@@ -27,7 +27,13 @@ h2{
     margin: 20px;
 }
 
+.espaciadoTituloUno{
+    padding-top: 20px;
+}
 
+.espaciadoTituloDos{
+    padding-top: 70px;
+}
 
 .padre{ 
      display: flex;

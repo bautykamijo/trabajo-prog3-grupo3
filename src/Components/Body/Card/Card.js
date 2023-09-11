@@ -1,4 +1,5 @@
-import React, { Component, Link} from "react";
+import React, { Component} from "react";
+import { Link } from "react-router-dom";
 
 class Card extends Component {
 
@@ -9,17 +10,20 @@ class Card extends Component {
         }};
 
     render() {
+        
         return(
+        
             <article className="cuadrado thor"> 
-           <Link className="aclickeo" to={`/detalles/${this.props.pelicula.id}`}   >  
-            <img src="https://img.freepik.com/foto-gratis/retrato-hombre-blanco-aislado_53876-40306.jpg?w=2000" alt="" className="img1"/>
-            {this.props.pelicula.title} (${this.props.pelicula.release_date})
-            </Link>
-            </article> 
+            <Link to={`/detalles/${this.props.pelicula.id}`} className="aclickeo">
+           <img src={"https://image.tmdb.org/t/p/w500/" + this.props.pelicula.poster_path} alt="foto" className="img1"/>
+           <p> {this.props.pelicula.title} {'(' + this.props.pelicula.release_date +')'}</p>
+           </Link>
+           </article>  
+            
         )
-    }
+    }};
 
 
-}
+
 
 export default Card;

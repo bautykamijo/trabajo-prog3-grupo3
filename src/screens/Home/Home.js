@@ -7,8 +7,8 @@ class Home extends Component {
     constructor(props){
     super(props);
     this.state = {
-        popular : {},
-        upcoming : {}
+        popular : false,
+        upcoming : false
 
     }};
 
@@ -17,14 +17,14 @@ class Home extends Component {
         fetch('https://api.themoviedb.org/3/movie/popular?api_key=20ad67ce31acb5c646fe21c26a0d44f1')
         .then((response) => response.json())
         .then((data) => this.setState({
-            popular : data
+            popular : data.results
         }))
         .catch( error => console.log('El error fue: ' + error))
 
         fetch('https://api.themoviedb.org/3/movie/upcoming?api_key=20ad67ce31acb5c646fe21c26a0d44f1')
         .then((response) => response.json())
         .then((data) => this.setState({
-            upcoming : data
+            upcoming : data.results
         }))
         .catch( error => console.log('El error fue: ' + error))
 
@@ -32,13 +32,13 @@ class Home extends Component {
 
 
     render(){
-       // console.log(this.state.popular.results);
-       // console.log(this.state.upcoming.results);
-
+        
         return(
             <main>
-                <CardContainer populares={this.state.popular.results}/>
-                <CardContainer proximamente={this.state.upcoming.results}/>
+                <h2 className="espaciadoTituloUno">Peliculas Populares</h2>
+                <CardContainer movies={this.state.popular}/>
+                <h2 className="espaciadoTituloDos">Peliculas en cartelera</h2>
+                <CardContainer movies={this.state.upcoming}/>
             </main>
         )
     };
