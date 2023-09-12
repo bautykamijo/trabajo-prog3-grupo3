@@ -36,9 +36,9 @@ render() {
                 <h4 className="estreno">{`Fecha de estreno: ${detallada.release_date}`}</h4>
                 <h4 className="popularidad">{`Popularidad: ${detallada.popularity}`}</h4>
                 <h4 className="duracion">{`Duración: ${detallada.runtime}m`}</h4>
-                <h4> Generos: <Link className="generoGlobal" to="/generos">
-                        {detallada.genres.map((genero) => <React.Fragment> {genero.name} </React.Fragment>)}
-                     </Link></h4>
+                <h4> <Link className="generoGlobal" to="/generos"> Generos: </Link> 
+                     {/*  {detallada.genres.map((genero)=><li>{genero.name}</li>)}*/}
+                     </h4>
                 <button className="favorites favoritismo"></button>
                 <h4 className="provider"></h4>
                 <h4 className="reviews"></h4>

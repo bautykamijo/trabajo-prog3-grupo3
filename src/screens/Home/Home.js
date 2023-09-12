@@ -16,9 +16,9 @@ class Home extends Component {
 
         fetch('https://api.themoviedb.org/3/movie/popular?api_key=20ad67ce31acb5c646fe21c26a0d44f1')
         .then((response) => response.json())
-        .then((data) => this.setState({
-            popular : data.results
-        }))
+        .then((data) =>
+         this.setState({popular : data.results})
+           )
         .catch( error => console.log('El error fue: ' + error))
 
         fetch('https://api.themoviedb.org/3/movie/upcoming?api_key=20ad67ce31acb5c646fe21c26a0d44f1')

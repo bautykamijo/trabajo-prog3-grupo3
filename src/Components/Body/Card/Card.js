@@ -9,17 +9,20 @@ class Card extends Component {
             valor : {},
         }};
 
+
+
     render() {
         
         return(
-        
+       
             <article className="cuadrado thor"> 
             <Link to={`/detalles/${this.props.pelicula.id}`} className="aclickeo">
            <img src={"https://image.tmdb.org/t/p/w500/" + this.props.pelicula.poster_path} alt="foto" className="img1"/>
            <p> {this.props.pelicula.title} {'(' + this.props.pelicula.release_date +')'}</p>
+           <button className="favorites favoritismo" >Ver más</button>
            </Link>
            </article>  
-            
+         
         )
     }};
 
