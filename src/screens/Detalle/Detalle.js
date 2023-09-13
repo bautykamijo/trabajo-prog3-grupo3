@@ -28,6 +28,7 @@ componentDidMount(){
 render() {
    console.log(this.state.pelicula.genres);
    let detallada =  this.state.pelicula
+   console.log(detallada);
     return(
       detallada ? <section className="padrethor">
         <article className="articulo hijothor"><img className="imagenThor" src={"https://image.tmdb.org/t/p/w500/" + detallada.poster_path} alt="foto"/></article>
@@ -38,8 +39,10 @@ render() {
                 <h4 className="popularidad">{`Popularidad: ${detallada.popularity}`}</h4>
                 <h4 className="duracion">{`Duración: ${detallada.runtime}m`}</h4>
                 <h4> <Link className="generoGlobal" to="/generos"> Generos: </Link> 
-                     {/*  {detallada.genres.map((genero)=><li>{genero.name}</li>)}*/}
+                    {console.log(detallada)}
+                    {detallada.genres && detallada.genres.length > 0 ? detallada.genres.map((genero)=><li className="generillos">{genero.name}</li>) : <h2>Cargando...</h2>}
                      </h4>
+                     <br></br>
                 <button className="favorites favoritismo"><i class="fa-solid fa-star"></i> Añadir a Favoritos</button>
                 </article>
        </section> : <h2>Cargando...</h2>
