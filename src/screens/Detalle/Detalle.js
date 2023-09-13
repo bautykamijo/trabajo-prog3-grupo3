@@ -29,7 +29,7 @@ render() {
    console.log(this.state.pelicula.genres);
    let detallada =  this.state.pelicula
     return(
-       <section className="padrethor">
+      detallada ? <section className="padrethor">
         <article className="articulo hijothor"><img className="imagenThor" src={"https://image.tmdb.org/t/p/w500/" + detallada.poster_path} alt="foto"/></article>
             <article className="articulo hijosinopsis">
                 <h3>Sinopsis</h3>
@@ -40,12 +40,9 @@ render() {
                 <h4> <Link className="generoGlobal" to="/generos"> Generos: </Link> 
                      {/*  {detallada.genres.map((genero)=><li>{genero.name}</li>)}*/}
                      </h4>
-                <button className="favorites favoritismo"></button>
-                <h4 className="provider"></h4>
-                <h4 className="reviews"></h4>
-                <ul className="autor"></ul>
+                <button className="favorites favoritismo"><i class="fa-solid fa-star"></i> Añadir a Favoritos</button>
                 </article>
-       </section>
+       </section> : <h2>Cargando...</h2>
     )
 };
 }
