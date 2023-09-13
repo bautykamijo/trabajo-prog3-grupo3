@@ -14,7 +14,7 @@ class Card extends Component {
     render() {
         
         return(
-       
+            <React.Fragment>
             <article className="cuadrado thor"> 
             <Link to={`/detalles/${this.props.pelicula.id}`} className="aclickeo">
            <img src={"https://image.tmdb.org/t/p/w500/" + this.props.pelicula.poster_path} alt="foto" className="img1"/>
@@ -22,7 +22,9 @@ class Card extends Component {
            <button className="favorites favoritismo" >Ver más</button>
            </Link>
            </article>  
-         
+    
+           
+          </React.Fragment>
         )
     }};
 
