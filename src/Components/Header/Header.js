@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import './Header.css';
-imp
-function Header(props) {
+
+function Header() {
     return(
 
         <header>

@@ -35,7 +35,7 @@ class Home extends Component {
         
         return(
             <main>
-                <h2 className="espaciadoTituloUno">Peliculas Populares</h2>
+                <h2 className="espaciadoTituloUno">Peliculas Populares</h2> 
                 <CardContainer movies={this.state.popular}/>
                 <h2 className="espaciadoTituloDos">Peliculas en cartelera</h2>
                 <CardContainer movies={this.state.upcoming}/>

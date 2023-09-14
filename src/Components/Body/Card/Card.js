@@ -22,6 +22,43 @@ class Card extends Component {
         }
     }
 
+    agregarQuitarFavoritos(){
+      let arrayPeliculas = [this.props.pelicula.id];
+      let peliculasTraidas = localStorage.getItem ("pelicularda");
+      let peliculasFinales = "";
+
+      if (peliculasTraidas === null){
+        peliculasTraidas = [];
+        console.log(arrayPeliculas);
+        peliculasFinales = JSON.stringify(arrayPeliculas);
+        this.setState({
+          textoFavoritos: "Quitar de favoritos",
+        });
+      }
+
+      let arrayPeliculasFinales = "";
+
+      if (peliculasTraidas.length !==0){
+        let arrayPeliculasTraidas = JSON.parse(peliculasTraidas);
+        arrayPeliculasFinales = arrayPeliculasTraidas.concat(arrayPeliculas);
+        peliculasFinales = JSON.stringify(arrayPeliculasFinales);
+        this.setState({
+          textoFavoritos: "Quitar de favoritos",
+        });
+
+      }
+    if (peliculasTraidas.includes(this.props.pelicula.id)){
+      let arrayPeliculasTraidas = JSON.parse(peliculasTraidas);
+      arrayPeliculasFinales = arrayPeliculasTraidas.filter(
+        (item) => item !== this.props.pelicula.id
+      );
+      peliculasFinales = JSON.stringify(arrayPeliculasFinales);
+      this.setState({
+        textoFavoritos: "Agregar a favoritos",
+      });
+    }
+    localStorage.setItem("pelicularda", peliculasFinales);
+    }
 
 
     render() {
@@ -34,7 +71,8 @@ class Card extends Component {
            <p className="textoFav"> {this.props.pelicula.title} {'(' + this.props.pelicula.release_date +')'}</p>
            </Link>
            <button className="favorites favoritismo" >Ver más</button>
-           <button className="favorites favoritismo">{this.state.textoFavoritos} <i class="fa-solid fa-star"></i></button>
+           <br></br>
+           <button className="favorites favoritismo" onClick={() => this.agregarQuitarFavoritos()}>{this.state.textoFavoritos} <i className="fa-solid fa-star"></i></button>
            </div>
            </article>
             
