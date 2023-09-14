@@ -7,7 +7,8 @@ class Detalle extends Component {
     constructor(props){
     super(props);
     this.state = {
-    pelicula : {},     
+    pelicula : {}, 
+    textoFavoritos : 'Añadir a Favoritos ', 
     }
     console.log(this.props);
 };
@@ -23,7 +24,56 @@ componentDidMount(){
         )
         .catch( error => console.log('El error fue: ' + error))
 
+        let peliculasTraidas = localStorage.getItem("pelicularda");
+        if (peliculasTraidas === null) {
+          this.setState({
+            textoFavoritos: "Agregar a favoritos",
+          });
+        } else if (peliculasTraidas.includes(this.props.match.params.id)) {
+          this.setState({
+            textoFavoritos: "Quitar de favoritos",
+          });
+        }
+
 }
+
+agregarQuitarFavoritos(){
+    let arrayPeliculas = [this.props.match.params.id];
+    let peliculasTraidas = localStorage.getItem ("pelicularda");
+    let peliculasFinales = "";
+
+    if (peliculasTraidas === null){
+      peliculasTraidas = [];
+      console.log(arrayPeliculas);
+      peliculasFinales = JSON.stringify(arrayPeliculas);
+      this.setState({
+        textoFavoritos: "Quitar de favoritos",
+      });
+    }
+
+    let arrayPeliculasFinales = "";
+
+    if (peliculasTraidas.length !==0){
+      let arrayPeliculasTraidas = JSON.parse(peliculasTraidas);
+      arrayPeliculasFinales = arrayPeliculasTraidas.concat(arrayPeliculas);
+      peliculasFinales = JSON.stringify(arrayPeliculasFinales);
+      this.setState({
+        textoFavoritos: "Quitar de favoritos",
+      });
+
+    }
+  if (peliculasTraidas.includes(this.props.match.params.id)){
+    let arrayPeliculasTraidas = JSON.parse(peliculasTraidas);
+    arrayPeliculasFinales = arrayPeliculasTraidas.filter(
+      (item) => item !== this.props.pelicula.id
+    );
+    peliculasFinales = JSON.stringify(arrayPeliculasFinales);
+    this.setState({
+      textoFavoritos: "Agregar a favoritos",
+    });
+  }
+  localStorage.setItem("pelicularda", peliculasFinales);
+  }
 
 render() {
    console.log(this.state.pelicula.genres);
@@ -43,8 +93,7 @@ render() {
                     {detallada.genres && detallada.genres.length > 0 ? detallada.genres.map((genero, idx)=><li key={genero.name + idx} className="generillos">{genero.name}</li>) : <p>Cargando...</p>}
                      </h4>
                      <br></br>
-                <button className="favorites favoritismo"><i className="fa-solid fa-star"></i> Añadir a Favoritos</button>
-                </article>
+                     <button className="favorites favoritismo" onClick={() => this.agregarQuitarFavoritos()}>{this.state.textoFavoritos} <i className="fa-solid fa-star"></i></button>                </article>
        </section> : <h2>Cargando...</h2>
     )
 };
