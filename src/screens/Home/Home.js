@@ -2,6 +2,7 @@ import React from "react";
 import { Component } from "react";
 import CardContainer from "../../Components/Body/CardContainer/CardContainer";
 import "./Home.css"
+import { Link } from "react-router-dom";
 
 class Home extends Component {
 
@@ -36,9 +37,9 @@ class Home extends Component {
         
         return(
             <main>
-                <h2 className="espaciadoTituloUno">Peliculas Populares</h2> 
+                <h2 className="espaciadoTituloUno">Peliculas Populares <Link to="/populares"><button class="favorites favoritismo">Ver todas</button></Link> </h2> 
                 <CardContainer movies={this.state.popular}/>
-                <h2 className="espaciadoTituloDos">Peliculas en cartelera</h2>
+                <h2 className="espaciadoTituloDos">Peliculas en cartelera <Link to="/cartelera"> <button class="favorites favoritismo">Ver todas</button></Link></h2>
                 <CardContainer movies={this.state.upcoming}/>
                 <br></br><br></br>
             </main>

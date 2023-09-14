@@ -8,6 +8,8 @@ import Generos from './screens/Generos/Generos';
 import Detalle from './screens/Detalle/Detalle';
 import NotFound from './screens/NotFound/NotFound';
 import Resultados from "./screens/Resultados/Resultados";
+import VerPopulares from "./screens/VerTodas/VerPopulares";
+import VerUpcoming from "./screens/VerTodas/VerUpcoming";
 
 
 
@@ -18,6 +20,8 @@ function App() {
     <Header/>
     <Switch>
       <Route path='/' exact={true} component={Home} />
+      <Route path='/populares' component={VerPopulares} />
+      <Route path='/cartelera' component={VerUpcoming} />
       <Route path='/detalles/:id' component={Detalle} />
       <Route path='/favorites' component={Favorites} />
       <Route path='/generos' exact={true} component={Generos} />

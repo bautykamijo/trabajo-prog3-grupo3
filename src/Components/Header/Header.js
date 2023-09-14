@@ -13,7 +13,8 @@ function Header() {
     <ul className="barranavheader">
             <li className="itemshome"><Link to='/' className="ahrefheader">HOME</Link></li>
             <li className="itemshome"><Link to='/favorites' className="ahrefheader">FAVORITES</Link></li>
-            <li className="itemshome"><Link to='/generos' className="ahrefheader">GENEROS</Link></li>
+            <li className="itemshome"><Link to='/populares' className="ahrefheader">POPULARES</Link></li>
+            <li className="itemshome"><Link to='/cartelera' className="ahrefheader">CARTELERA</Link></li>
          </ul>
     </nav>
 
