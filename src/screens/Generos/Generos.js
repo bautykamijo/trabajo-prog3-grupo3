@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "./Generos.css";
 
 class Generos extends Component {
   constructor(props) {
@@ -33,21 +34,25 @@ class Generos extends Component {
 
   render() {
     return (
-      <div>
-        <h2>Géneros de Películas</h2>
-        <ul>
+        <section class="generofather">
+        <div class="generopeliculas">
+        <h2 className='titulopeli'>Géneros de Películas</h2>
+        <article className='cuadrado topg hijogenero'><ul className='apeli'>
           {this.state.generoPeli.map((genero, idx) => (
-            <li key={`movie-${idx}`}>{genero.name}</li>
+            <li className='listaGenero' key={genero.name + idx}><span className='aclickeo'>{genero.name}</span></li>
           ))}
         </ul>
-
-        <h2>Géneros de Series</h2>
-        <ul>
+        </article>
+        </div>
+        <div class="generoseries"></div>
+        <h2 className='tituloseries'>Géneros de Series</h2>
+        <article className='cuadrado topg hijogenero'><ul className='aserie'>
           {this.state.generoSerie.map((genero, idx) => (
-            <li key={`tv-${idx}`}>{genero.name}</li>
+            <li className='listaGenero' key={genero.name + idx}><span className='aclickeo'>{genero.name}</span></li>
           ))}
         </ul>
-      </div>
+        </article>
+      </section>
     );
   }
 }

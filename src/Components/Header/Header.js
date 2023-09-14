@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import './Header.css';
-
+imp
 function Header(props) {
     return(
 
@@ -21,6 +21,7 @@ function Header(props) {
     <div className="divheader">
     <form action="./search-results.html" method="get">
         <input className="buscadoryboton" type="search" name="buscador" value="" placeholder="Peliculas, series..."/>
+
     </form>
     </div>
     </header>

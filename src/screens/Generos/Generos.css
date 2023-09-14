@@ -1,0 +1,89 @@
+.generofather{
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 3%;
+}
+
+.generofather .hijogenero {
+    display: flex;
+    justify-content: center;
+    width: 41%;
+}
+
+.generofather article{
+    display: flex;
+align-items: center;
+height: 300px;
+width: 20%;
+background-repeat: no-repeat;
+justify-content: center;
+}
+
+.generofather img{
+    width: 75%;
+    height: 70%;
+    border-radius: 100px;
+}
+
+.generofather a{
+    text-align: center;
+}
+
+.seriesfav{
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 20px;
+}
+
+.hijofav{
+    padding-left: 2%;
+    padding-right: 1%;
+}
+
+.generoseries{
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.generopeliculas{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.apeli {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.aserie {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.generofather div h2{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 3%;
+}
