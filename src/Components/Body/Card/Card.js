@@ -6,14 +6,10 @@ class Card extends Component {
     constructor(props){
         super(props);
         this.state = {
-            view: false, 
-            textoFavoritos : 'Añadir a Favoritos ',
+            view: "Ver mas", 
+            textoFavoritos : 'Agregar a Favoritos ',
         }};
 
-
-    visibilidad = () => {
-            this.setState({ view : !this.state.view });
-         };
 
     componentDidMount(){
         let recuperoStorage = localStorage.getItem("pelicularda");
@@ -53,6 +49,22 @@ class Card extends Component {
        localStorage.setItem("pelicularda", favoritosStringified)
     }
 
+    verMasInfo(){
+        if(this.state.view === 'Ver mas'){
+            this.setState({
+                view : "Ver menos"
+            })
+        } else {
+            this.setState({
+                view : "Ver mas"
+            })
+        }
+    }
+
+    alertaInfo(descripcion){
+        alert(descripcion)
+    }
+
 
     render() {
         let descripcion = this.props.pelicula.overview
@@ -63,9 +75,10 @@ class Card extends Component {
            <img src={"https://image.tmdb.org/t/p/w500/" + this.props.pelicula.poster_path} alt="foto" className="img1"/>
            <p className="textoFav"> {this.props.pelicula.title} {'(' + this.props.pelicula.release_date +')'}</p>
            </Link>
-           <button className="favorites favoritismo" >Ver más</button>
+           <button className="favorites favoritismo" onClick={()=>this.verMasInfo()}>{this.state.view}</button>
            <br></br>
            <button className="favorites favoritismo" onClick={() => this.agregarQuitarFavoritos(this.props.pelicula.id)}>{this.state.textoFavoritos} <i className="fa-solid fa-star"></i></button>
+           {this.state.view === 'Ver mas' ? false :  <p className="textoFav fondoNegro">{descripcion}</p>}
            </div>
            </article>
             
