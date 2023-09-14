@@ -6,8 +6,14 @@ class Card extends Component {
     constructor(props){
         super(props);
         this.state = {
+            view: false, 
             textoFavoritos : 'Añadir a Favoritos ',
         }};
+
+
+    visibilidad = () => {
+            this.setState({ view : !this.state.view });
+         };
 
     componentDidMount(){
         let peliculasTraidas = localStorage.getItem("pelicularda");
