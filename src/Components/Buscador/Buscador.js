@@ -1,44 +1,31 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
+class Buscador extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            valor: '',
+            peliculas: []
+        };
+    }
+    evitarDefault(event){
+        event.preventDefault();
+    }
+    controlarCambios(event){
+        this.setState({valor: event.target.value})
+    }
 
-class Buscador extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      valorInput: "",
-    };
-  }
-
-
-  detenerDefault(evento) {
-    evento.preventDefault();
-  }
-
-
-  guardarInput(evento) {
-    this.setState(
-      {
-        valorInput: evento.target.value,
-      },
-      () => this.props.filtro(this.state.valorInput)
-    );
-  }
-
-
-  render() {
-    return (
-      <form onSubmit={(evento) => this.detenerDefault(evento)}>
-        <input
-          type="text"
-          onChange={(evento) => this.guardarInput(evento)}
-          value={this.state.valorInput}
-        />
-      </form>
-    );
-  }
-}
-
-
+    
+    render(){
+        console.log(this.state.peliculas);
+        return(
+        <form onSubmit={(event)=>this.evitarDefault(event)}>
+            <input className="buscadoryboton" type="text" placeholder="Buscar" onChange={(event)=>this.controlarCambios(event)} value={this.state.valor}/>
+            <Link to={`/resultados/${this.state.valor}`}><button type="submit" value="Submit">Buscar</button></Link>
+            
+        </form>
+        )
+    }
+    }
 export default Buscador;
-
-

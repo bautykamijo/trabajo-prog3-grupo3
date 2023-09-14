@@ -39,6 +39,7 @@ class Home extends Component {
                 <CardContainer movies={this.state.popular}/>
                 <h2 className="espaciadoTituloDos">Peliculas en cartelera</h2>
                 <CardContainer movies={this.state.upcoming}/>
+                <br></br><br></br>
             </main>
         )
     };
