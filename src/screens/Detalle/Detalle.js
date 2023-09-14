@@ -8,7 +8,7 @@ class Detalle extends Component {
     super(props);
     this.state = {
     pelicula : {}, 
-    textoFavoritos : 'Añadir a Favoritos ', 
+    textoFavoritos : 'Agregar a Favoritos ', 
     }
     console.log(this.props);
 };
@@ -30,7 +30,7 @@ componentDidMount(){
           this.setState({
             textoFavoritos: "Agregar a favoritos",
           });
-        } else if (peliculasFavs.includes(this.props.pelicula.id)) {
+        } else if (peliculasFavs.includes(this.state.pelicula.id)) {
           this.setState({
             textoFavoritos: "Quitar de favoritos",
           });
@@ -81,7 +81,7 @@ render() {
                     {detallada.genres && detallada.genres.length > 0 ? detallada.genres.map((genero, idx)=><li key={genero.name + idx} className="generillos">{genero.name}</li>) : <p>Cargando...</p>}
                      </h4>
                      <br></br>
-                     <button className="favorites favoritismo" onClick={() => this.agregarQuitarFavoritos(detallada.id)}>{this.state.textoFavoritos} <i className="fa-solid fa-star"></i></button>               
+                     <button className="favorites favoritismo" onClick={() => this.agregarQuitarFavoritos(this.props.match.params.id)}>{this.state.textoFavoritos} <i className="fa-solid fa-star"></i></button>               
             </article>
        </section> : <h2>Cargando...</h2>
     )

@@ -1,6 +1,6 @@
 import React from "react";
 import { Component } from "react";
-import Card from "../../Components/Body/Card/Card";
+import CardContainer from "../../Components/Body/CardContainer/CardContainer";
 
 class Favorites extends Component{
 
@@ -25,7 +25,7 @@ class Favorites extends Component{
             listaFavoritos.forEach((id)=>{
                     fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=20ad67ce31acb5c646fe21c26a0d44f1`)
                     .then((response) => response.json())
-                    .then( (listaFavoritos) => {
+                    .then( listaFavoritos => {
                     peliculasLista.push(listaFavoritos)
                     this.setState({favoritos : peliculasLista })
                     })
@@ -38,16 +38,14 @@ class Favorites extends Component{
 
     render(){
         
-                
+                console.log(this.state.favoritos);
             return(
-            <React.Fragment>
-            <h2 className="espaciadoTituloUno">Tus peliculas favoritas...</h2> 
-            <br></br><br></br><br></br>
-            <section className="padre populares">
-            {this.state.favoritos && this.state.favoritos.length > 0 ? this.state.favoritos.slice(0,5).map((movie, idx) =>  <Card key={movie.title + idx} pelicula={movie}/>) : <h2>Cargando...</h2>}
-            </section>
-            <br></br><br></br><br></br><br></br><br></br>
-            </React.Fragment>
+                <React.Fragment>
+                <h2 className="espaciadoTituloUno">Tus peliculas favoritas...</h2> 
+                <br></br><br></br><br></br><br></br>
+                {this.state.favoritos && this.state.favoritos.length > 0 ? <CardContainer movies={ this.state.favoritos }/> : <p className="favoriteable">No tienes ninguna pelicula agregada a favoritos</p>}
+                <br></br><br></br><br></br><br></br><br></br>
+                </React.Fragment>
             
         )}
         
