@@ -1,0 +1,9 @@
+.padre{ 
+    display: flex;
+    flex-wrap: wrap;
+   box-sizing: border-box;
+   flex-direction: row;
+   justify-content: space-evenly;
+   margin: 20px;
+
+}
