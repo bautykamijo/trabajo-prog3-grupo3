@@ -23,15 +23,15 @@ class Favorites extends Component{
             console.log(listaFavoritos);
 
             listaFavoritos.forEach((id)=>{
-                return(
                     fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=20ad67ce31acb5c646fe21c26a0d44f1`)
                     .then((response) => response.json())
-                    .then( listaFavoritos => {
+                    .then( (listaFavoritos) => {
                     peliculasLista.push(listaFavoritos)
                     this.setState({favoritos : peliculasLista })
                     })
+                   
                     .catch( error => console.log('El error fue: ' + error))
-                            )
+                            
                         })
                     }
                 }
@@ -44,7 +44,7 @@ class Favorites extends Component{
             <h2 className="espaciadoTituloUno">Tus peliculas favoritas...</h2> 
             <br></br><br></br><br></br>
             <section className="padre populares">
-            {this.state.favoritos ? this.state.favoritos.slice(0,5).map((movie, idx) =>  <Card key={movie.title + idx} pelicula={movie}/>) : <h2>Cargando...</h2>}
+            {this.state.favoritos && this.state.favoritos.length > 0 ? this.state.favoritos.slice(0,5).map((movie, idx) =>  <Card key={movie.title + idx} pelicula={movie}/>) : <h2>Cargando...</h2>}
             </section>
             <br></br><br></br><br></br><br></br><br></br>
             </React.Fragment>
