@@ -29,6 +29,7 @@ class Card extends Component {
 
       if (peliculasTraidas === null){
         peliculasTraidas = [];
+        console.log(arrayPeliculas);
         peliculasFinales = JSON.stringify(arrayPeliculas);
         this.setState({
           textoFavoritos: "Quitar de favoritos",
@@ -70,7 +71,8 @@ class Card extends Component {
            <p className="textoFav"> {this.props.pelicula.title} {'(' + this.props.pelicula.release_date +')'}</p>
            </Link>
            <button className="favorites favoritismo" >Ver más</button>
-           <button className="favorites favoritismo" onClick={() => this.agregarQuitarFavoritos()}>{this.state.textoFavoritos} <i class="fa-solid fa-star"></i></button>
+           <br></br>
+           <button className="favorites favoritismo" onClick={() => this.agregarQuitarFavoritos()}>{this.state.textoFavoritos} <i className="fa-solid fa-star"></i></button>
            </div>
            </article>
             

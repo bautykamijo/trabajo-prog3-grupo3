@@ -40,10 +40,10 @@ render() {
                 <h4 className="duracion">{`Duración: ${detallada.runtime}m`}</h4>
                 <h4> <Link className="generoGlobal" to="/generos"> Generos: </Link> 
                     {console.log(detallada)}
-                    {detallada.genres && detallada.genres.length > 0 ? detallada.genres.map((genero)=><li className="generillos">{genero.name}</li>) : <h2>Cargando...</h2>}
+                    {detallada.genres && detallada.genres.length > 0 ? detallada.genres.map((genero, idx)=><li key={genero.name + idx} className="generillos">{genero.name}</li>) : <p>Cargando...</p>}
                      </h4>
                      <br></br>
-                <button className="favorites favoritismo"><i class="fa-solid fa-star"></i> Añadir a Favoritos</button>
+                <button className="favorites favoritismo"><i className="fa-solid fa-star"></i> Añadir a Favoritos</button>
                 </article>
        </section> : <h2>Cargando...</h2>
     )
