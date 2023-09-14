@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Buscador from "../Buscador/Buscador";
 import './Header.css';
 
 function Header() {
@@ -16,13 +17,10 @@ function Header() {
          </ul>
     </nav>
 
-   
+ 
 
     <div className="divheader">
-    <form action="./search-results.html" method="get">
-        <input className="buscadoryboton" type="search" name="buscador" value="" placeholder="Peliculas, series..."/>
-
-    </form>
+        <Buscador/>
     </div>
     </header>
 

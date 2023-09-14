@@ -7,6 +7,7 @@ import Favorites from './screens/Favorites/Favorites';
 import Generos from './screens/Generos/Generos';
 import Detalle from './screens/Detalle/Detalle';
 import NotFound from './screens/NotFound/NotFound';
+import Resultados from "./screens/Resultados/Resultados";
 
 
 
@@ -20,7 +21,9 @@ function App() {
       <Route path='/detalles/:id' component={Detalle} />
       <Route path='/favorites' component={Favorites} />
       <Route path='/generos' exact={true} component={Generos} />
+      <Route path='/resultados/:query' component={Resultados}/>
       <Route path='' component={NotFound} />
+      
     </Switch>
     
     <Footer/>
