@@ -25,56 +25,44 @@ componentDidMount(){
         )
         .catch( error => console.log('El error fue: ' + error))
 
-        let peliculasTraidas = localStorage.getItem("pelicularda");
-        if (peliculasTraidas === null) {
+        let recuperoStorage = localStorage.getItem("pelicularda");
+        let peliculasFavs = JSON.parse(recuperoStorage)
+        if (recuperoStorage === null) {
           this.setState({
             textoFavoritos: "Agregar a favoritos",
           });
-        } else if (peliculasTraidas.includes(this.props.match.params.id)) {
+        } else if (peliculasFavs.includes(this.props.pelicula.id)) {
           this.setState({
             textoFavoritos: "Quitar de favoritos",
           });
-        }
-
+        }   
 }
 
-agregarQuitarFavoritos(){
-    let arrayPeliculas = [this.props.match.params.id];
-    let peliculasTraidas = localStorage.getItem ("pelicularda");
-    let peliculasFinales = "";
+agregarQuitarFavoritos(idPelicula){
+    let favoritos = [];
+    let recuperoStorage = localStorage.getItem ("pelicularda");
+    
 
-    if (peliculasTraidas === null){
-      peliculasTraidas = [];
-      console.log(arrayPeliculas);
-      peliculasFinales = JSON.stringify(arrayPeliculas);
+      if (recuperoStorage !== null){
+      favoritos = JSON.parse(recuperoStorage)};
+
+      if (favoritos.includes(idPelicula)){
+      favoritos = favoritos.filter((id) => id === idPelicula);
       this.setState({
-        textoFavoritos: "Quitar de favoritos",
-      });
-    }
+          textoFavoritos: "Agregar a favoritos",
+      })}
 
-    let arrayPeliculasFinales = "";
-
-    if (peliculasTraidas.length !==0){
-      let arrayPeliculasTraidas = JSON.parse(peliculasTraidas);
-      arrayPeliculasFinales = arrayPeliculasTraidas.concat(arrayPeliculas);
-      peliculasFinales = JSON.stringify(arrayPeliculasFinales);
+      else {
+      favoritos.push(idPelicula);
       this.setState({
-        textoFavoritos: "Quitar de favoritos",
-      });
+          textoFavoritos: "Quitar de favoritos",
+      })}
 
-    }
-  if (peliculasTraidas.includes(this.props.match.params.id)){
-    let arrayPeliculasTraidas = JSON.parse(peliculasTraidas);
-    arrayPeliculasFinales = arrayPeliculasTraidas.filter(
-      (item) => item !== this.props.pelicula.id
-    );
-    peliculasFinales = JSON.stringify(arrayPeliculasFinales);
-    this.setState({
-      textoFavoritos: "Agregar a favoritos",
-    });
+     let favoritosStringified = JSON.stringify(favoritos) 
+     localStorage.setItem("pelicularda", favoritosStringified)
   }
-  localStorage.setItem("pelicularda", peliculasFinales);
-  }
+
+
 
 render() {
    console.log(this.state.pelicula.genres);
@@ -94,7 +82,8 @@ render() {
                     {detallada.genres && detallada.genres.length > 0 ? detallada.genres.map((genero, idx)=><li key={genero.name + idx} className="generillos">{genero.name}</li>) : <p>Cargando...</p>}
                      </h4>
                      <br></br>
-                     <button className="favorites favoritismo" onClick={() => this.agregarQuitarFavoritos()}>{this.state.textoFavoritos} <i className="fa-solid fa-star"></i></button>                </article>
+                     <button className="favorites favoritismo" onClick={() => this.agregarQuitarFavoritos(detallada.id)}>{this.state.textoFavoritos} <i className="fa-solid fa-star"></i></button>               
+            </article>
        </section> : <h2>Cargando...</h2>
     )
 };

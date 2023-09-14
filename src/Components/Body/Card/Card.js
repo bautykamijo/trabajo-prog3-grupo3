@@ -16,54 +16,41 @@ class Card extends Component {
          };
 
     componentDidMount(){
-        let peliculasTraidas = localStorage.getItem("pelicularda");
-        if (peliculasTraidas === null) {
+        let recuperoStorage = localStorage.getItem("pelicularda");
+        let peliculasFavs = JSON.parse(recuperoStorage)
+        if (recuperoStorage === null) {
           this.setState({
             textoFavoritos: "Agregar a favoritos",
           });
-        } else if (peliculasTraidas.includes(this.props.pelicula.id)) {
+        } else if (peliculasFavs.includes(this.props.pelicula.id)) {
           this.setState({
             textoFavoritos: "Quitar de favoritos",
           });
         }
     }
 
-    agregarQuitarFavoritos(){
-      let arrayPeliculas = [this.props.pelicula.id];
-      let peliculasTraidas = localStorage.getItem ("pelicularda");
-      let peliculasFinales = "";
+    agregarQuitarFavoritos(idPelicula){
+      let favoritos = [];
+      let recuperoStorage = localStorage.getItem ("pelicularda");
+      
 
-      if (peliculasTraidas === null){
-        peliculasTraidas = [];
-        console.log(arrayPeliculas);
-        peliculasFinales = JSON.stringify(arrayPeliculas);
+        if (recuperoStorage !== null){
+        favoritos = JSON.parse(recuperoStorage)};
+
+        if (favoritos.includes(idPelicula)){
+        favoritos = favoritos.filter((id) => id === idPelicula);
         this.setState({
-          textoFavoritos: "Quitar de favoritos",
-        });
-      }
+            textoFavoritos: "Agregar a favoritos",
+        })}
 
-      let arrayPeliculasFinales = "";
-
-      if (peliculasTraidas.length !==0){
-        let arrayPeliculasTraidas = JSON.parse(peliculasTraidas);
-        arrayPeliculasFinales = arrayPeliculasTraidas.concat(arrayPeliculas);
-        peliculasFinales = JSON.stringify(arrayPeliculasFinales);
+        else {
+        favoritos.push(idPelicula);
         this.setState({
-          textoFavoritos: "Quitar de favoritos",
-        });
+            textoFavoritos: "Quitar de favoritos",
+        })}
 
-      }
-    if (peliculasTraidas.includes(this.props.pelicula.id)){
-      let arrayPeliculasTraidas = JSON.parse(peliculasTraidas);
-      arrayPeliculasFinales = arrayPeliculasTraidas.filter(
-        (item) => item !== this.props.pelicula.id
-      );
-      peliculasFinales = JSON.stringify(arrayPeliculasFinales);
-      this.setState({
-        textoFavoritos: "Agregar a favoritos",
-      });
-    }
-    localStorage.setItem("pelicularda", peliculasFinales);
+       let favoritosStringified = JSON.stringify(favoritos) 
+       localStorage.setItem("pelicularda", favoritosStringified)
     }
 
 
@@ -78,7 +65,7 @@ class Card extends Component {
            </Link>
            <button className="favorites favoritismo" >Ver más</button>
            <br></br>
-           <button className="favorites favoritismo" onClick={() => this.agregarQuitarFavoritos()}>{this.state.textoFavoritos} <i className="fa-solid fa-star"></i></button>
+           <button className="favorites favoritismo" onClick={() => this.agregarQuitarFavoritos(this.props.pelicula.id)}>{this.state.textoFavoritos} <i className="fa-solid fa-star"></i></button>
            </div>
            </article>
             
