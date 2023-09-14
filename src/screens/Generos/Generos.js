@@ -34,21 +34,21 @@ class Generos extends Component {
 
   render() {
     return (
-        <section class="generofather">
-        <div class="generopeliculas">
-        <h2 className='titulopeli'>Géneros de Películas</h2>
-        <article className='cuadrado topg hijogenero'><ul className='apeli'>
+        <section>
+        <div>
+        <h2>Géneros de Películas</h2>
+        <article ><ul>
           {this.state.generoPeli.map((genero, idx) => (
-            <li className='listaGenero' key={genero.name + idx}><span className='aclickeo'>{genero.name}</span></li>
+            <li  key={genero.name + idx}><span className='aclickeo' >{genero.name}</span></li>
           ))}
         </ul>
         </article>
         </div>
-        <div class="generoseries"></div>
-        <h2 className='tituloseries'>Géneros de Series</h2>
-        <article className='cuadrado topg hijogenero'><ul className='aserie'>
+        <div ></div>
+        <h2 >Géneros de Series</h2>
+        <article ><ul>
           {this.state.generoSerie.map((genero, idx) => (
-            <li className='listaGenero' key={genero.name + idx}><span className='aclickeo'>{genero.name}</span></li>
+            <li key={genero.name + idx}><span className='aclickeo'>{genero.name}</span></li>
           ))}
         </ul>
         </article>
