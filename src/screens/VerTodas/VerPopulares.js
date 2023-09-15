@@ -1,6 +1,7 @@
 import React from "react";
 import { Component } from "react";
 import ContainerTodas from "../../Components/Body/ContainerTodas/ContainerTodas";
+import Filtrador from "../../Components/Body/Filtrador/Filtrador";
 import "./VerTodas.css"
 
 class VerPopulares extends Component {
@@ -9,6 +10,7 @@ class VerPopulares extends Component {
     super(props);
     this.state = {
         popular : [],
+        pagina : 1
         
 
     }};
@@ -24,12 +26,34 @@ class VerPopulares extends Component {
                                                                 }
 
 
+    filtradorPeliculas = (texto) => {
+        let filtradas = this.state.popular.filter((movie) =>
+        movie.title.toUpperCase().includes(texto.toUpperCase()))
+
+        this.setState({
+            popular: filtradas,
+        })
+    }
+
+    traerMas(){
+        let numero = this.state.pagina;
+        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=20ad67ce31acb5c646fe21c26a0d44f1&language=en-US&page=${numero}`)
+            .then((response) => response.json())
+            .then((data) => this.setState(
+            { popular: data.results.concat(this.state.popular),
+                page: numero + 1})
+            )
+            .catch((error) => console.log(error));
+    }
+
+
 
     render(){
         
         return(
             <main>
-                <h2 className="espaciadoTituloUno">Peliculas Populares</h2> 
+                <Filtrador filtrador={(texto)=> this.filtradorPeliculas(texto)}/>
+                <h2 className="espaciadoTituloUno">Peliculas Populares <button className="favorites favoritismo" onClick={() => this.traerMas()}> Traer mas </button></h2> 
                 <ContainerTodas movies={this.state.popular}/>
                 <br></br><br></br>
             </main>
