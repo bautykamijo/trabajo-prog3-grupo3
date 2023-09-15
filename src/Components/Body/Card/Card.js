@@ -78,7 +78,7 @@ class Card extends Component {
            <button className="favorites favoritismo" onClick={()=>this.verMasInfo()}>{this.state.view}</button>
            <br></br>
            <button className="favorites favoritismo" onClick={() => this.agregarQuitarFavoritos(this.props.pelicula.id)}>{this.state.textoFavoritos} <i className="fa-solid fa-star"></i></button>
-           {this.state.view === 'Ver mas' ? false :  <p className="textoFav fondoNegro">{descripcion}</p>}
+           {this.state.view === 'Ver mas' ? false : this.alertaInfo(descripcion) }
            </div>
            </article>
             
