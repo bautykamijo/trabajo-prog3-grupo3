@@ -1,0 +1,11 @@
+.espaciadoTituloUno{
+    padding-top: 20px;
+}
+.favoriteable{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 150px;
+    padding-bottom: 150px;
+}

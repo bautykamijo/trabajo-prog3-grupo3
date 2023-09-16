@@ -2,7 +2,7 @@ import React from "react";
 import { Component } from "react";
 import ContainerTodas from "../../Components/Body/ContainerTodas/ContainerTodas";
 import Filtrador from "../../Components/Body/Filtrador/Filtrador";
-import "./VerTodas.css"
+
 
 class VerPopulares extends Component {
 

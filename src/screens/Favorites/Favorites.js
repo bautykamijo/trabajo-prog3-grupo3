@@ -1,6 +1,7 @@
 import React from "react";
 import { Component } from "react";
 import CardContainer from "../../Components/Body/CardContainer/CardContainer";
+import "./Favorites"
 
 class Favorites extends Component{
 
