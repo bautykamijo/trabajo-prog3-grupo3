@@ -11,11 +11,12 @@ class Filtrador extends Component{
 
     controlarSubmit(event) {
         event.preventDefault();
-        this.props.filtrador(this.state.textoFiltrado);
+        
     }
 
     controlarCambios(event) {
-        this.setState({textoFiltrado: event.target.value})
+        this.setState({textoFiltrado: event.target.value},
+        this.props.filtrador(this.state.textoFiltrado))
     }
 
     render(){
