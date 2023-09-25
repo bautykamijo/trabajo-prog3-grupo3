@@ -16,7 +16,8 @@ class Filtrador extends Component{
 
     controlarCambios(event) {
         this.setState({textoFiltrado: event.target.value},
-        this.props.filtrador(this.state.textoFiltrado))
+            ()=>console.log(event))
+        this.props.filtrador(this.state.textoFiltrado);
     }
 
     render(){
