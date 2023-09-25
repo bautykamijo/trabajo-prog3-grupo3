@@ -36,6 +36,7 @@ class Home extends Component {
     render(){
         
         return(
+            
             <main>
                 <h2 className="espaciadoTituloUno">Peliculas Populares <Link to="/populares"><button class="favorites favoritismo">Ver todas</button></Link> </h2> 
                 <CardContainer movies={this.state.popular}/>
