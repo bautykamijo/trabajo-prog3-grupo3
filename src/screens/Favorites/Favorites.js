@@ -27,7 +27,8 @@ class Favorites extends Component{
                     fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=20ad67ce31acb5c646fe21c26a0d44f1`)
                     .then((response) => response.json())
                     .then( listaFavoritos => {
-                    peliculasLista.push(listaFavoritos)
+                        if (peliculasLista.includes(listaFavoritos) === false)
+                    {peliculasLista.push(listaFavoritos)}
                     this.setState({favoritos : peliculasLista })
                     })
                    

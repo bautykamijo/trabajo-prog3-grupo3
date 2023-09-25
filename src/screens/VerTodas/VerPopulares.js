@@ -11,8 +11,6 @@ class VerPopulares extends Component {
     this.state = {
         popular : [],
         pagina : 2,
-        textoFiltrado : ''
-        
 
     }};
 
